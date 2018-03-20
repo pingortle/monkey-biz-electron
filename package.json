@@ -14,6 +14,7 @@
     "electron-packager": "^11.1.0"
   },
   "dependencies": {
-    "choo": "^6.10.3"
+    "choo": "^6.10.3",
+    "monkey-biz-node": "git+https://github.com/pingortle/monkey-biz-node.git"
   }
 }
