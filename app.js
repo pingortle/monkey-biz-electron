@@ -32,9 +32,16 @@ app.use((state, emitter) => {
   emitter.on('result', value => state.result = value)
 
   emitter.on('startGame', async () => {
-    const connection = createConnection()
-    state.connection = await startGame(connection)
-    emitter.emit('pushState', '/game')
+    try {
+      emitter.emit('running')
+      const connection = createConnection()
+      state.connection = await startGame(connection)
+      emitter.emit('pushState', '/game')
+    } catch (error) {
+      console.error(error)
+    } finally {
+      emitter.emit('done')
+    }
   })
 })
 
